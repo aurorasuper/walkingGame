@@ -2,9 +2,11 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View , SafeAreaView} from 'react-native';
 import { white, teaGreen, black, midGreen, darkGreen, goldBrown, gold } from './Utils/Colors';
 import Header from './Components/Header';
+import Map from './Components/Map';
 import { useState } from 'react';
 import { useFonts, Raleway_600SemiBold, Raleway_700Bold } from  '@expo-google-fonts/raleway';
 import { OpenSans_400Regular } from  '@expo-google-fonts/open-sans';
+
 
 export default function App() {
   const [user, setUser] = useState({firstName: 'Britta', lastName: 'Larsson', level: 10, points: 375, steps: null});
@@ -24,10 +26,9 @@ export default function App() {
   }else{
     return (
       <SafeAreaView style={styles.container}>
-        <Header user={user} style={styles}/>
-        <Text style={styles.heading1}>Välkommen till promix, {user.firstName}! </Text>
-        <Text style={styles.baseText}>Open up App.js to start working on your app!</Text>
         <StatusBar style="auto" />
+        <Header user={user} style={styles}/>  
+        <Map/>
       </SafeAreaView>
     );
   }
@@ -76,5 +77,5 @@ const styles = StyleSheet.create({
   },
   showHeader:{
     height: '120 px',
-  }
+  },
 });
