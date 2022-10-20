@@ -2,57 +2,13 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View , Image, SafeAreaView, VirtualizedList} from 'react-native';
 import { white, teaGreen, black, midGreen, darkGreen, goldBrown, gold } from './Utils/Colors';
 import Header from './Components/Header';
+import QuestList from './Components/QuestList';
 import { useState } from 'react';
 import { useFonts, Raleway_600SemiBold, Raleway_700Bold, Raleway_300Light_Italic } from  '@expo-google-fonts/raleway';
 import { OpenSans_400Regular } from  '@expo-google-fonts/open-sans';
 
 export default function App() {
   const [user, setUser] = useState({firstName: 'Britta', lastName: 'Larsson', level: 10, points: 375, steps: null});
-  const [location, setLocation] = useState({X: '63.8225153', Y: '20.2713224', name: 'Döbelns park', description: '', image: ''});
-  /*const [quest, setQuest] = useState({location: location, name: 'Find ' + location.name + '!', points: 40});*/
-
-  data = [
-    {
-      id: 1,
-      title: 'Find ' + location.name + '!', 
-      location: location, 
-      points: 20
-    },
-    {
-      id: 2,
-      title: 'Go to an event!', 
-      location: location, 
-      points: 45
-    },
-    {
-      id: 3,
-      title: 'Walk 10000 steps!', 
-      location: null, 
-      points: 25
-    },
-    {
-      id: 4,
-      title: 'Find ' + location.name + '!', 
-      location: location, 
-      points: 35
-    },
-    {
-      id: 5,
-      title: 'Take a picture at a new location!', 
-      location: null, 
-      points: 15
-    }
-  ];
-
-  const getItem = (data, index) => {
-    return data[index];
-  };
-  
-  const Item = (item) => (
-    <View style={styles.item}>
-      <Text style={styles.heading6}>{item.title}</Text>
-    </View>
-  );
 
   let [fontsLoaded] = useFonts({
     OpenSans_400Regular,
@@ -73,21 +29,7 @@ export default function App() {
         <Text style={styles.heading1}>Välkommen till promix, {user.firstName}! </Text>
         <Text style={styles.baseText}>Open up App.js to start working on your app!</Text>
         <StatusBar style="auto" />
-        <View style={styles.questContainer}>   
-        <View style={styles.questHeadline}>
-        <Text style={styles.heading5white}>Uppdrag</Text>
-        <Image style={styles.icon} source={require('./assets/Arrow.png')}/>
-        </View>
-        <VirtualizedList showsVerticalScrollIndicator={false}
-        style = {styles.list}
-        data={data}
-        initialNumToRender={4}
-        renderItem={({ item }) => <Item title={item.title} key={item.id} />}
-        keyExtractor={item => item.id}
-        getItemCount={data => data.length}
-        getItem={getItem}
-        />
-        </View>
+        <QuestList style={styles}/>
       </SafeAreaView>
     );
   }
