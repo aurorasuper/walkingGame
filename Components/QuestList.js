@@ -45,9 +45,9 @@ export default function QuestList({style}) {
     };
     
     const Item = (item) => (
-      <View style={style.item}>
-        <Text style={style.heading6}>{item.title}</Text>
-        
+      <View style={internalStyles.item}>
+        <Text style={internalStyles.heading6}>{item.title}</Text>
+        <Image style={internalStyles.itemImage} source={require('../assets/döbelnsPlan.png')}/>
       </View>
     );
 
@@ -130,7 +130,21 @@ const internalStyles = StyleSheet.create({
         padding: 16,
         margin: 7,
         backgroundColor: teaGreen,
-        borderRadius: 10
+        borderRadius: 10,
+        flexDirection:'row', 
+        justifyContent: 'space-between',
+    },
+    itemImage: {
+      height: 100,
+      width:100,
+      borderRadius: 10,
+      margin:-16     
+    },
+    heading6:{
+      fontSize:18,
+      fontFamily: 'Raleway_700Bold',
+      color: darkGreen,
+      width:200
     },
     list:{
         alignSelf:"stretch",
