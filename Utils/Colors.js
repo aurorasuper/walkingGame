@@ -9,3 +9,4 @@ export const darkGreen ="#41726B";
 export const pinRed ="#DC4313";
 export const taskPurple = "#AD43B6";
 export const navBlue ="#5678F2";
+export const goldOpacity80 = "rgba(220, 143, 19, 0.8)";

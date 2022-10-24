@@ -18,7 +18,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.puma.promenadspel",
+      "config":{
+        "googleMapsApiKey":"AIzaSyC6KCl-HvLiVQox9pFp96T2CTtbS4yF-Cc"
+      }
     },
     "android": {
       "adaptiveIcon": {

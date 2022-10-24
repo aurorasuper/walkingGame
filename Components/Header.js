@@ -20,7 +20,6 @@ export default function Header({style, user}) {
                 </View>
             </View>
             <Progress.Bar progress={progressPercent} borderColor={midGreen} color={darkGreen} height={15} width={200} />
-
         </View>
 
     );
