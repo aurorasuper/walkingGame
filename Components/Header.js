@@ -3,6 +3,7 @@ import { StyleSheet, Text, View , Image} from 'react-native';
 import { teaGreen, gold, midGreen, darkGreen } from '../Utils/Colors';
 import BrittaProfilBild from '../assets/BrittaProfilBild.jpeg'
 import * as Progress from 'react-native-progress';
+import { fontStyles } from '../Utils/Fonts.js' 
 
 export default function Header({style, user}) {
     let progressPercent = user.points/500;
@@ -22,7 +23,6 @@ export default function Header({style, user}) {
             <Progress.Bar progress={progressPercent} borderColor={midGreen} color={darkGreen} height={15} width={200} />
 
         </View>
-
     );
 }
 
