@@ -28,7 +28,7 @@ export default function App() {
       <SafeAreaView style={styles.container}>
         <StatusBar style="auto" />
         <Header user={user} style={styles}/>  
-        <Map/>
+        <Map style={styles}/>
       </SafeAreaView>
     );
   }
