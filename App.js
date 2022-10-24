@@ -3,78 +3,30 @@ import { StyleSheet, Text, View , SafeAreaView} from 'react-native';
 import { white, teaGreen, black, midGreen, darkGreen, goldBrown, gold } from './Utils/Colors';
 import Header from './Components/Header';
 import { useState } from 'react';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useFonts, Raleway_600SemiBold, Raleway_700Bold } from  '@expo-google-fonts/raleway';
 import { OpenSans_400Regular } from  '@expo-google-fonts/open-sans';
+import Navbar from './Components/Navbar';
+import { MapHomeScreen } from './Components/Submenues/MapHomeScreen';
+import { ProfileHomeScreen } from './Components/Submenues/ProfileHomeScreen';
+import { SocialHomeScreen } from './Components/Submenues/SocialHomeScreen';
 
-export default function App() {
-  const [user, setUser] = useState({firstName: 'Britta', lastName: 'Larsson', level: 10, points: 375, steps: null});
+const Stack = createNativeStackNavigator();
 
-  let [fontsLoaded] = useFonts({
-    OpenSans_400Regular,
-    Raleway_600SemiBold,
-    Raleway_700Bold
-  });
+function App() {
 
-  if(!fontsLoaded){
-    return(
-      <View>
-        <Text>Loading...</Text>
-      </View>
-    )
-  }else{
-    return (
-      <SafeAreaView style={styles.container}>
-        <Header user={user} style={styles}/>
-        <Text style={styles.heading1}>Välkommen till promix, {user.firstName}! </Text>
-        <Text style={styles.baseText}>Open up App.js to start working on your app!</Text>
-        <StatusBar style="auto" />
-      </SafeAreaView>
-    );
-  }
-
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName='ProfileHomeScreen' screenOptions={{headerShown: false}}>
+        <Stack.Screen name="MapHomeScreen" component={MapHomeScreen} />
+        <Stack.Screen name="ProfileHomeScreen" component={ProfileHomeScreen} />
+        <Stack.Screen name="SocialHomeScreen" component={SocialHomeScreen} />
+      </Stack.Navigator>
+      <Navbar/>
+    </NavigationContainer>
+  );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: white,
-  },
-  baseText:{
-    fontFamily: 'OpenSans_400Regular',
-    fontSize: 16,
-    color: black,
-  },
-  heading1:{
-    fontSize:32,
-    fontFamily: 'Raleway_600SemiBold',
-    color: darkGreen,
-  },
-  heading2:{
-    fontSize:29,
-    fontFamily: 'Raleway_600SemiBold',
-    color: darkGreen,
-  },
-  heading3:{
-    fontSize:26,
-    fontFamily: 'Raleway_600SemiBold',
-    color: darkGreen,
-  },
-  heading4:{
-    fontSize:23,
-    fontFamily: 'Raleway_600SemiBold',
-    color: darkGreen,
-  },
-  heading5:{
-    fontSize:20,
-    fontFamily: 'Raleway_600SemiBold',
-    color: darkGreen,
-  },
-  heading6:{
-    fontSize:18,
-    fontFamily: 'Raleway_700Bold',
-    color: darkGreen,
-  },
-  showHeader:{
-    height: '120 px',
-  }
-});
+export default App;
