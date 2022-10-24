@@ -4,7 +4,7 @@ import { teaGreen, gold, midGreen, darkGreen } from '../Utils/Colors';
 import { useState } from 'react';
 
 export default function QuestList({style}) {
-    const [location, setLocation] = useState({X: '63.8225153', Y: '20.2713224', name: 'Döbelns park', description: '', image: ''});
+    const [location, setLocation] = useState({X: '63.8225153', Y: '20.2713224', name: 'Döbelns park', description: '', image: '../assets/döbelnsPlan.png'});
     const [shouldShow, setshouldShow] = useState(false);
 
     data = [
@@ -46,8 +46,12 @@ export default function QuestList({style}) {
     
     const Item = (item) => (
       <View style={internalStyles.item}>
-        <Text style={internalStyles.heading6}>{item.title}</Text>
-        <Image style={internalStyles.itemImage} source={require('../assets/döbelnsPlan.png')}/>
+      <Text style={item.location !== null ? internalStyles.heading6 : style.heading6}>{item.title}</Text>
+        {
+          item.location !== null ? (  
+            <Image style={internalStyles.itemImage} source={require('../assets/döbelnsPlan.png')}/>
+          ) : null
+        }
       </View>
     );
 
