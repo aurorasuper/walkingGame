@@ -114,7 +114,7 @@ const internalStyles = StyleSheet.create({
       position: "absolute",
       zIndex: 5,
       width: '95%',
-      maxHeight:545
+      maxHeight:'84%'
   },
     questHeadline: {
         flexDirection:'row', 
