@@ -1,16 +1,19 @@
 import { StyleSheet, Text, View, Button, Alert} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 // Knappen har ingen style!!
-export default function PageNotFound({style}) {
+export default function PageNotFound() {
+    const navigation = useNavigation();
+
     return (
         <View style={internalStyles.textContainer}>
-            <Text style={style.heading2}>Hoppsan!</Text>
-            <Text style={style.baseText}>Sidan kunde inte hittas.</Text>
-            <Text style={style.baseText}>Förmodligen är den inte helt klar än.</Text>
+            <Text>Hoppsan!</Text>
+            <Text>Sidan kunde inte hittas.</Text>
+            <Text>Förmodligen är den inte helt klar än.</Text>
             <Button 
               title="Tillbaka"
               // Behöver vad som händer vid onPress
-              onPress={() => Alert.alert('Button pressed!')}
+              onPress={() => navigation.goBack()}
             />
         </View>
     )
