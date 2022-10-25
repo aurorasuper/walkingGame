@@ -13,31 +13,31 @@ export default function QuestList({style}) {
     data = [
       {
         id: 1,
-        title: 'Find ' + location.name + '!', 
+        title: 'Hitta ' + location.name + '!', 
         location: location, 
         points: 20
       },
       {
         id: 2,
-        title: 'Go to an event!', 
+        title: 'Gå på ett event!', 
         location: location, 
         points: 45
       },
       {
         id: 3,
-        title: 'Walk 10000 steps!', 
+        title: 'Gå 10000 steg!', 
         location: null, 
         points: 25
       },
       {
         id: 4,
-        title: 'Find ' + location.name + '!', 
+        title: 'Hitta ' + location.name + '!', 
         location: location, 
         points: 35
       },
       {
         id: 5,
-        title: 'Take a picture at a new location!', 
+        title: 'Ta en bild på en ny plats!', 
         location: null, 
         points: 15
       }
