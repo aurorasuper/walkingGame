@@ -4,6 +4,7 @@ import { useState } from 'react';
 import * as React from 'react';
 import { white, teaGreen } from '../../Utils/Colors';
 import Map from '../Map'
+import QuestList from '../QuestList';
 
 export function MapHomeScreen(){
   
@@ -12,6 +13,7 @@ export function MapHomeScreen(){
   return(
     <SafeAreaView style={internalStyles.container}>
             <Header user={user}/>
+            <QuestList/>
             <Map/>
     </SafeAreaView>
     

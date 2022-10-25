@@ -6,8 +6,7 @@ import {navBlue, white, goldOpacity80, gold, black, darkGreen} from '../Utils/Co
 import {isPointWithinRadius} from 'geolib';
 import { Dimensions,  Modal, Pressable } from 'react-native';
 import CustomMarker from './CustomMarker';
-
-
+import { fontStyles } from '../Utils/Fonts';
 
 const  width = Dimensions.get('window').width;
 const  height = Dimensions.get('window').height;
@@ -29,9 +28,9 @@ export default function Map(){
     {id:3, name: "Skin 4", description:"Hitta den stora skulpturen", points: 100,  category: "Skulptur", latitude:63.819722, longitude:20.278889, imageSrc:null},
     {id:4, name: "2 x 3^2 Cube", description:"Hitta skulpturen!", points: 100,  category: "Skulptur", latitude:63.819167, longitude: 20.281111, imageSrc: '../assets/BrittaProfilBild.jpeg'}];
 
-
     // request current location 
     useEffect(() => {
+      
         (async () => {
           
           let { status } = await Location.requestForegroundPermissionsAsync();
@@ -56,7 +55,6 @@ export default function Map(){
 
         })();
       }, []);
-
       // handle error message from request
       let text = 'Waiting..';
       if (errorMsg) {
@@ -66,7 +64,6 @@ export default function Map(){
         lat = location.coords.latitude;
         long = location.coords.longitude;
       }
-
       let latDelta = 0.1;
       let longDelta = latDelta*aspectRatio;
 
@@ -113,20 +110,20 @@ export default function Map(){
                 >
                   <View style={styles.centeredView}>
                     <View style={styles.modalView}>
-                      <Text style={[styles.modalText]}>{modalObject.name}</Text>
+                      <Text style={[styles.modalText, fontStyles.heading1]}>{modalObject.name}</Text>
                       {modalObject.imageSrc ? 
                         <Image style={styles.img} 
                         source={modalObject.imageSrc} 
                         alt={modalObject.name}
                       /> : null
                       }
-                      <Text style={[styles.modalText]}>{modalObject.description}</Text>
+                      <Text style={[styles.modalText, fontStyles.baseText]}>{modalObject.description}</Text>
                       
                       <Pressable
                         style={[styles.button, styles.buttonClose]}
                         onPress={() => closeModal()}
                       >
-                        <Text style={[styles.textStyle ]}>Ta en bild</Text>
+                        <Text style={[styles.textStyle, fontStyles.baseText, {color:white} ]}>Ta en bild</Text>
                       </Pressable>
                     </View>
                   </View>
@@ -158,7 +155,7 @@ export default function Map(){
                             <CustomMarker item={obj} near={isNear(obj)}/>
                                <Callout>
                                 <View style={styles.card}>
-                                    <Text style={[styles.calloutText]}>{obj.category}</Text>
+                                    <Text style={[styles.calloutText, fontStyles.heading6]}>{obj.category}</Text>
                                 </View>
                               </Callout>
                           </Marker>

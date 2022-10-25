@@ -1,16 +1,11 @@
-import { StyleSheet, Pressable, Text, View , Image, Button, TouchableOpacity } from 'react-native';
-import { white } from '../Utils/Colors';
-import mapIcon from '../assets/mapIcon.svg';
-import mapIconActive from '../assets/mapIconActive.svg';
-import SocialIcon from '../assets/socialIcon.svg';
-import SocialIconActive from '../assets/socialIconActive.svg';
-import profileIcon from '../assets/profileIcon.svg';
-import profileIconActive from '../assets/profileIconActive.svg';
+import { StyleSheet, Pressable, Text, View ,TouchableOpacity } from 'react-native';
+import { navGrey, teaGreen, white } from '../Utils/Colors';
 import * as React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useState, useEffect } from 'react';
 import { Ionicons } from '@expo/vector-icons'; 
-import { black, gold } from '../Utils/Colors';
+import { black, gold, goldBrown } from '../Utils/Colors';
+import { fontStyles } from '../Utils/Fonts';
 
 
 
@@ -24,11 +19,17 @@ export default function Navbar (){
     const renderMapIcon = () =>{
         if(navBarIconState==2){
             return(
-                <Ionicons name="ios-map" size={32} color={gold} />
+                <View style={{alignItems:'center'}}>
+                <Ionicons name="ios-map"  size={32} color={gold} />
+                <Text style={[fontStyles.navBarText, {color:goldBrown}]}>Karta</Text>
+            </View>
             )
         }else{
             return(
-                <Ionicons name="ios-map-outline"  size={32} color={black}  />
+                <View style={{alignItems:'center'}}>
+                    <Ionicons name="ios-map-outline"  size={32} color={black} />
+                    <Text style={[fontStyles.navBarText, {color:black}]}>Karta</Text>
+                </View>
             )
         }
     }
@@ -36,11 +37,18 @@ export default function Navbar (){
     const renderSocialIcon = () =>{
         if(navBarIconState==1){
             return(
-                <Ionicons name="ios-people"  size={32} color={gold} />
+                <View style={{alignItems:'center'}}>
+                    <Ionicons name="ios-people"  size={32} color={gold} />
+                    <Text style={[fontStyles.navBarText, {color:goldBrown}]}>Socialt</Text>
+                </View>
+                
             )
         }else{
             return(
-                <Ionicons name="ios-people-outline"  size={32} color={black}  />
+                <View style={{alignItems:'center'}}>
+                    <Ionicons name="ios-people-outline"  size={32} color={black} />
+                    <Text style={[fontStyles.navBarText, {color:black}]}>Socialt</Text>
+                </View>
             )
         }
     }
@@ -48,11 +56,19 @@ export default function Navbar (){
     const renderProfileIcon = () =>{
         if(navBarIconState==3){
             return(
-                <Ionicons name="ios-person" size={32} color={gold} />
+                <View style={{alignItems:'center'}}>
+                    <Ionicons name="ios-person" size={32} color={gold} />
+                    <Text style={[fontStyles.navBarText, {color:goldBrown}]}>Profil</Text>
+                </View>
+                
             )
         }else{
             return(
-                <Ionicons name="ios-person-outline" size={32} color={black}  />
+                <View style={{alignItems:'center'}}>
+                    <Ionicons name="ios-person-outline" size={32} color={black}  />
+                    <Text style={[fontStyles.navBarText, {color:black}]}>Profil</Text>
+                </View>
+                
             )
         }
     }
@@ -61,17 +77,15 @@ export default function Navbar (){
             <View style={internalStyles.iconsContainer}>
                 <TouchableOpacity style={internalStyles.navBarButtonStyle} onPress={() => {setNavBarIconState(1) ; navigation.navigate('SocialHomeScreen')}}>
                     {renderSocialIcon()}
-                    <Text>Socialt</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={internalStyles.navBarButtonStyle} onPress={() => {setNavBarIconState(2) ; navigation.navigate('MapHomeScreen')}}>    
                     {renderMapIcon()}
-                    <Text>Karta</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={internalStyles.navBarButtonStyle} onPress={() => {setNavBarIconState(3) ; navigation.navigate('ProfileHomeScreen')}}>
                     {renderProfileIcon()}
-                    <Text>Profil</Text>   
+                      
                 </TouchableOpacity>
             </View> 
         </View>
@@ -87,7 +101,8 @@ const internalStyles = StyleSheet.create({
         bottom:0,
         left:0,
         flex:1,
-        justifyContent: 'center'
+        justifyContent: 'center',
+        
     },
     mapIconStyle:{
         width: 49,
