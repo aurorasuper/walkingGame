@@ -1,7 +1,10 @@
 import react from "react";
-import { StyleSheet, Text, View , Image, TouchableOpacity, VirtualizedList} from 'react-native';
+import { StyleSheet, Text, View , Image, TouchableOpacity, VirtualizedList, Dimensions} from 'react-native';
 import { teaGreen, gold, midGreen, darkGreen } from '../Utils/Colors';
 import { useState } from 'react';
+
+const  width = Dimensions.get('window').width;
+const  height = Dimensions.get('window').height;
 
 export default function QuestList({style}) {
     const [location, setLocation] = useState({X: '63.8225153', Y: '20.2713224', name: 'Döbelns park', description: '', image: '../assets/döbelnsPlan.png'});
@@ -80,8 +83,7 @@ export default function QuestList({style}) {
               keyExtractor={item => item.id}
               getItemCount={data => data.length}
               getItem={getItem}
-            />
-                        
+            />                  
                         
           ) : null
         }
@@ -95,16 +97,24 @@ const internalStyles = StyleSheet.create({
     questContainerClosed: {
         backgroundColor:darkGreen,
         borderRadius:30,   
+        top:height*0.16,
         margin:10,
         paddingHorizontal:10, 
-        paddingTop:5
+        paddingTop:5,
+        position: "absolute",
+        zIndex: 5,
+        width: '95%'
     },
     questContainerOpen: {
       backgroundColor:darkGreen,
-      borderRadius:15,   
-      flex:0.975,
+      borderRadius:15, 
+      top:height*0.15,  
       margin:10,
       padding:10, 
+      position: "absolute",
+      zIndex: 5,
+      width: '95%',
+      maxHeight:545
   },
     questHeadline: {
         flexDirection:'row', 
@@ -152,6 +162,7 @@ const internalStyles = StyleSheet.create({
     },
     list:{
         alignSelf:"stretch",
+        flex: 0.5
     },
 
 });

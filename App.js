@@ -28,9 +28,9 @@ export default function App() {
     return (
       <SafeAreaView style={styles.container}>
         <StatusBar style="auto" />
-        <Header user={user} style={styles}/>  
+        <Header user={user} style={styles}/> 
+        <QuestList style={styles}/> 
         <Map style={styles}/>
-        <QuestList style={styles}/>
       </SafeAreaView>
     );
   }
